@@ -4,7 +4,7 @@
 #
 Name     : argon2
 Version  : 20171227
-Release  : 1
+Release  : 2
 URL      : https://github.com/P-H-C/phc-winner-argon2/archive/20171227.tar.gz
 Source0  : https://github.com/P-H-C/phc-winner-argon2/archive/20171227.tar.gz
 Summary  : Development libraries for libargon2
@@ -65,15 +65,18 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1532731687
+export SOURCE_DATE_EPOCH=1532878377
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1532731687
+export SOURCE_DATE_EPOCH=1532878377
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/argon2
 cp LICENSE %{buildroot}/usr/share/doc/argon2/LICENSE
 %make_install
+## make_install_append content
+mv %{buildroot}/usr/lib %{buildroot}/usr/lib64
+## make_install_append end
 
 %files
 %defattr(-,root,root,-)
@@ -85,11 +88,11 @@ cp LICENSE %{buildroot}/usr/share/doc/argon2/LICENSE
 %files dev
 %defattr(-,root,root,-)
 /usr/include/*.h
-/usr/lib/libargon2.so
+/usr/lib64/libargon2.so
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib/libargon2.so.1
+/usr/lib64/libargon2.so.1
 
 %files license
 %defattr(-,root,root,-)
