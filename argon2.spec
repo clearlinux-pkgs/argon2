@@ -4,15 +4,15 @@
 #
 Name     : argon2
 Version  : 20171227
-Release  : 2
+Release  : 3
 URL      : https://github.com/P-H-C/phc-winner-argon2/archive/20171227.tar.gz
 Source0  : https://github.com/P-H-C/phc-winner-argon2/archive/20171227.tar.gz
 Summary  : Development libraries for libargon2
 Group    : Development/Tools
 License  : CC0-1.0
-Requires: argon2-bin
-Requires: argon2-lib
-Requires: argon2-license
+Requires: argon2-bin = %{version}-%{release}
+Requires: argon2-lib = %{version}-%{release}
+Requires: argon2-license = %{version}-%{release}
 
 %description
 # Argon2
@@ -23,7 +23,7 @@ Requires: argon2-license
 %package bin
 Summary: bin components for the argon2 package.
 Group: Binaries
-Requires: argon2-license
+Requires: argon2-license = %{version}-%{release}
 
 %description bin
 bin components for the argon2 package.
@@ -32,9 +32,9 @@ bin components for the argon2 package.
 %package dev
 Summary: dev components for the argon2 package.
 Group: Development
-Requires: argon2-lib
-Requires: argon2-bin
-Provides: argon2-devel
+Requires: argon2-lib = %{version}-%{release}
+Requires: argon2-bin = %{version}-%{release}
+Provides: argon2-devel = %{version}-%{release}
 
 %description dev
 dev components for the argon2 package.
@@ -43,7 +43,7 @@ dev components for the argon2 package.
 %package lib
 Summary: lib components for the argon2 package.
 Group: Libraries
-Requires: argon2-license
+Requires: argon2-license = %{version}-%{release}
 
 %description lib
 lib components for the argon2 package.
@@ -65,18 +65,19 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1532878377
-make  %{?_smp_mflags}
+export SOURCE_DATE_EPOCH=1544633378
+make  %{?_smp_mflags} OPTTARGET=westmere
+
 
 %install
-export SOURCE_DATE_EPOCH=1532878377
+export SOURCE_DATE_EPOCH=1544633378
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/argon2
-cp LICENSE %{buildroot}/usr/share/doc/argon2/LICENSE
+mkdir -p %{buildroot}/usr/share/package-licenses/argon2
+cp LICENSE %{buildroot}/usr/share/package-licenses/argon2/LICENSE
 %make_install
-## make_install_append content
+## install_append content
 mv %{buildroot}/usr/lib %{buildroot}/usr/lib64
-## make_install_append end
+## install_append end
 
 %files
 %defattr(-,root,root,-)
@@ -95,5 +96,5 @@ mv %{buildroot}/usr/lib %{buildroot}/usr/lib64
 /usr/lib64/libargon2.so.1
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/argon2/LICENSE
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/argon2/LICENSE
