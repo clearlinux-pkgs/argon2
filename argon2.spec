@@ -4,7 +4,7 @@
 #
 Name     : argon2
 Version  : 20171227
-Release  : 3
+Release  : 4
 URL      : https://github.com/P-H-C/phc-winner-argon2/archive/20171227.tar.gz
 Source0  : https://github.com/P-H-C/phc-winner-argon2/archive/20171227.tar.gz
 Summary  : Development libraries for libargon2
