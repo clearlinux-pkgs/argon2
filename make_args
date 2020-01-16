@@ -1,1 +1,1 @@
-OPTTARGET=westmere
+OPTTARGET=westmere LIBRARY_REL=lib64
