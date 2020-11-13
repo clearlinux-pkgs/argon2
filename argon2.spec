@@ -4,7 +4,7 @@
 #
 Name     : argon2
 Version  : 20190702
-Release  : 7
+Release  : 8
 URL      : https://github.com/P-H-C/phc-winner-argon2/archive/20190702/phc-winner-argon2-20190702.tar.gz
 Source0  : https://github.com/P-H-C/phc-winner-argon2/archive/20190702/phc-winner-argon2-20190702.tar.gz
 Summary  : Development libraries for libargon2
@@ -67,20 +67,20 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1579204657
+export SOURCE_DATE_EPOCH=1605310760
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 make  %{?_smp_mflags}  OPTTARGET=westmere LIBRARY_REL=lib64
 
 
 %install
-export SOURCE_DATE_EPOCH=1579204657
+export SOURCE_DATE_EPOCH=1605310760
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/argon2
 cp %{_builddir}/phc-winner-argon2-20190702/LICENSE %{buildroot}/usr/share/package-licenses/argon2/edffb32348c3b38dd68cfb2e6cac9dc4a3502c8b
